@@ -1,12 +1,13 @@
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectID;
 const Q = require('q');
+const MongoQueryString = "mongodb://newsjsp:ouBnFVvi6JgsFAHHg5dufq8yx0DXlNLAAvWzvnSaOlf5fkKh4fVTcSUGj6Y8IowqhVoJArPIRCJMII1a0MjvEQ==@newsjsp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
 
 exports.create = (collection, body, unique_fields) => {
 
     let deferred = Q.defer();
 
-    MongoClient.connect("mongodb://localhost", (err, client) => {
+    MongoClient.connect("", (err, client) => {
         if (err) {
             deferred.reject(err);
         } else {
@@ -55,7 +56,7 @@ exports.findByFilter = (collection, query, limitedFileds, page, limit) => {
     page = parseInt(page);
     limit = parseInt(limit);
 
-    MongoClient.connect('mongodb://localhost', (err, client) => {
+    MongoClient.connect(MongoQueryString, (err, client) => {
         if (err) {
             deferred.reject(err);
         } else {
@@ -80,7 +81,7 @@ exports.findByFilter = (collection, query, limitedFileds, page, limit) => {
 }
 exports.count = (collection, query) => {
     var deferred = Q.defer();
-    MongoClient.connect("mongodb://localhost", (err, client) => {
+    MongoClient.connect("MongoQueryString", (err, client) => {
         if (err) {
             deferred.reject(err);
         } else {
@@ -105,7 +106,7 @@ exports.count = (collection, query) => {
 }
 exports.findById = (collection, id, limitedFileds) => {
     var deferred = Q.defer();
-    MongoClient.connect("mongodb://localhost", (err, client) => {
+    MongoClient.connect("MongoQueryString", (err, client) => {
         if (err) {
             deferred.reject(err);
         } else {
@@ -133,7 +134,7 @@ exports.findById = (collection, id, limitedFileds) => {
 }
 exports.findOneAndUpdate = (collection, body) => {
     var deferred = Q.defer();
-    MongoClient.connect("mongodb://localhost", (err, client) => {
+    MongoClient.connect("MongoQueryString", (err, client) => {
         if (err) {
             deferred.reject(err);
         } else {
@@ -159,7 +160,7 @@ exports.findOneAndUpdate = (collection, body) => {
 }
 exports.findOneAndUpdateByCustomQuery = (collection, query, body) => {
     var deferred = Q.defer();
-    MongoClient.connect("mongodb://localhost", (err, client) => {
+    MongoClient.connect("MongoQueryString", (err, client) => {
         if (err) {
             deferred.reject(err);
         } else {
@@ -194,7 +195,7 @@ exports.findOneAndUpdateByCustomQuery = (collection, query, body) => {
 }
 exports.findOneAndUpdateByCustomQueryAndCustomFiled = (collection, query, update_query, upsert) => {
     var deferred = Q.defer();
-    MongoClient.connect("mongodb://localhost", (err, client) => {
+    MongoClient.connect("MongoQueryString", (err, client) => {
         if (err) {
             deferred.reject(err);
         } else {
@@ -231,7 +232,7 @@ exports.findOneAndUpdateByCustomQueryAndCustomFiled = (collection, query, update
 }
 exports.findOneAndUpdateByField = (collection, query, set, upsert) => {
     var deferred = Q.defer();
-    MongoClient.connect("mongodb://localhost", (err, client) => {
+    MongoClient.connect("MongoQueryString", (err, client) => {
         if (err) {
             deferred.reject(err);
         } else {
@@ -255,7 +256,7 @@ exports.findOneAndUpdateByField = (collection, query, set, upsert) => {
 }
 exports.findOneAndRemove = (collection, query) => {
     var deferred = Q.defer();
-    MongoClient.connect("mongodb://localhost", (err, client) => {
+    MongoClient.connect("MongoQueryString", (err, client) => {
         if (err) {
             deferred.reject(err);
         } else {
@@ -279,7 +280,7 @@ exports.findOneAndRemove = (collection, query) => {
 
 exports.aggregations = (collection, query) => {
     var deferred = Q.defer();
-    MongoClient.connect("mongodb://localhost", (err, client) => {
+    MongoClient.connect("MongoQueryString", (err, client) => {
         if (err) {
             deferred.reject(err);
         } else {
